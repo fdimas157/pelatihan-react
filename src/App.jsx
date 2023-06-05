@@ -1,5 +1,4 @@
 import Header from "./components/Header";
-import Kotak from "./components/Kotak";
 import "./App.css";
 
 function App() {
@@ -42,7 +41,19 @@ function App() {
   ];
 
   const product = listProduct.map((product) => (
-    <div className="kotak">
+    <div
+      className="kotak"
+      key={product.id}
+      onClick={() => {
+        return alert(
+          "Produk " +
+            product.productName +
+            " dengan harga " +
+            product.productPrice +
+            " merupakan produk dengan kualitas terbaik"
+        );
+      }}
+    >
       <img
         key={product.id}
         src={product.urlImage}
@@ -57,10 +68,13 @@ function App() {
       </p>
     </div>
   ));
+
   return (
     <>
       <Header />
-      <div className="bungkus">{product}</div>
+      <div key={listProduct.id} className="bungkus" >
+        {product}
+      </div>
     </>
   );
 }
